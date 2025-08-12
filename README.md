@@ -1,47 +1,48 @@
-# 📦 Demand Tracker
+# 📦 Demand Work Flow Phase 1
 
-A simple Python script to log and track material demands using Excel files.  
-It checks your past purchases, retrieves the latest details if available, and appends new requests to a demand tracker file.
-
----
-
-## ✨ Features
-- Reads **past purchase history** from `past_purchases.xlsx`
-- Accepts **item name** and **required quantity** from the user
-- Retrieves **latest purchase price, date, vendor, and category** if available
-- Appends the entry to `demand_tracker.xlsx` (or creates one if missing)
-- Formats dates automatically
-- Leaves placeholders for future procurement milestones
+A Python-based demand Workflow tool that records, retrieves, and manages purchase requests efficiently using Excel as the backend storage.
 
 ---
 
-## 🗂 File Requirements
-1. **past_purchases.xlsx**  
-   Must contain at least these columns:
-   - Item Name
-   - Last Price
-   - Last Purchase Date
-   - Vendor
-   - Category
-
-2. **demand_tracker.xlsx** (created automatically if missing)  
-   Stores all demand entries with columns for procurement process stages.
+## 🚀 Features
+- Load and track purchase details from an Excel file.
+- Retrieve latest purchase information for repeated items.
+- Automatically handles missing or unmatched data.
+- Easy-to-use command-line interface.
+- Uses `pandas` for efficient data handling.
 
 ---
 
-## 📥 Installation
+## 📂 Installation
+
+### 1️⃣ Clone this repository
 ```bash
-# Clone this repository
-git clone https://github.com/YourUsername/demand-tracker.git
-cd demand-tracker
+git clone https://github.com/itsashishrawat/DemandWorkflowPhase1.git
+cd DemandWorkflowphase1
+```
 
-
-
-# Install required Python packages
+### 2️⃣ Install dependencies
+```bash
 pip install pandas openpyxl
+```
 
+---
 
-## Program Flow
+## 🛠️ Usage
+Run the program with:
+```bash
+python Workflow.py
+```
+You will be prompted to:
+1. Enter the item name.
+2. Enter the required quantity.
+3. View past purchase details (if available).
+4. Save the new entry to the Excel tracker.
+
+---
+
+## 🔄 Program Flow
+```mermaid
 flowchart TD
     A[Start] --> B[Load past purchases]
     B --> C[Get item details from user]
@@ -52,3 +53,35 @@ flowchart TD
     F --> G[Prepare new entry]
     G --> H[Save to tracker Excel]
     H --> I[End]
+```
+
+---
+
+## 🖥️ Example
+```
+Enter Item Name: car
+Enter Required Quantity: 3
+
+Past Purchase Details Found:
+  Last Price: 30000
+  Last Purchase Date: 2024-10-15
+  Vendor: maruti
+  Category: motorvehicle
+
+New entry saved to tracker.xlsx!
+```
+
+---
+
+## 🧰 Tech Stack
+- **Python 3.x**
+- **pandas** — Data manipulation & analysis.
+- **openpyxl** — Excel file reading/writing.
+
+---
+
+## 📌 Notes
+- Ensure `tracker.xlsx` exists in the project directory before running.
+- Non-date values in the date column will be converted to `NaT` (Not A Time) using `errors='coerce'` in pandas.
+
+---
